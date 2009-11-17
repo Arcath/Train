@@ -1,0 +1,7 @@
+Train doesnt currently feature any form of installer, and is rather  featureless. For now dont use this source
+
+GEM List
+
+These are the gems required to get Train working:
+
+	-	Authlogic
