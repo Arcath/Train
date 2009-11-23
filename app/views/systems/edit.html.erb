@@ -1,0 +1,20 @@
+<h1>Editing system</h1>
+
+<% form_for(@system) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :variable %><br />
+    <%= f.text_field :variable %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @system %> |
+<%= link_to 'Back', systems_path %>

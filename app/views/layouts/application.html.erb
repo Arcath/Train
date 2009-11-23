@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Train CMS</title>
+  <title><%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'template' %>
 </head>
@@ -17,10 +17,13 @@
 <div class="usermenu">
 <% if current_user %>
 	Welcome Back <%= current_user.username %>,
-	<%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+	<%= link_to "Edit Profile", edit_user_path(current_user.id) %> | 
+	<% if permitted_to? :index, :systems %>
+		<%= link_to "System Admin", systems_path %> | 
+	<% end %>
 	<%= link_to "Logout", logout_path %>
 <% else %>
-	Welcome to #SITENAME! Please 
+	Welcome to <%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %> please 
 	<%= link_to "Register", new_user_path %> or 
 	<%= link_to "Login", login_path %>
 <% end %>	

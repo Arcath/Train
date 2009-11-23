@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091123152533) do
+ActiveRecord::Schema.define(:version => 20091123174345) do
+
+  create_table "systems", :force => true do |t|
+    t.string   "variable"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"
