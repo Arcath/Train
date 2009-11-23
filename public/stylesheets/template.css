@@ -1,0 +1,40 @@
+/* Tag Styles */
+body{
+	margin:0px;
+	padding:0px;
+}
+
+a, a:visited{
+	text-decoration:none;
+	color:#0000FF
+}
+
+a:hover{
+	color:#0000CC;
+}
+
+/*Custom Classes */
+.usermenu{
+	background-color:#000000;
+	padding:5px;
+	color:#FFFFFF;
+	text-align:right;
+}
+.flash{
+	padding:10px;
+	border:#F6E69F solid 2px;
+	background-color:#FFF1C9;
+	z-index:900;
+	display:block;
+	float:left;
+	width:100%;
+	/*margin-top:-43px;*/
+}
+.content{
+	width:900px;
+	margin:auto;
+}
+.header{
+	background-color:#0000FF;
+	height:200px;
+}

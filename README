@@ -1,7 +1,12 @@
+= Train
+
 Train doesnt currently feature any form of installer, and is rather  featureless. For now dont use this source
 
-GEM List
+= GEM List
 
 These are the gems required to get Train working:
 
 	-	Authlogic
+	-	Declarative Authorization
+	
+All gems will be installed by running "rake gems:install"

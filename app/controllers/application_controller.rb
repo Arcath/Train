@@ -4,11 +4,17 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  before_filter { |c| Authorization.current_user = c.current_user }
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+  def permission_denied
+  	flash[:error]="You do not have permission to do that"
+  	redirect_to root_url
+  end
+  
   helper_method :current_user
-  private
   def current_user_session
   	return @current_user_session if defined?(@current_user_session)
   	@current_user_session = UserSession.find
