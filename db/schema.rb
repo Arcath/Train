@@ -9,7 +9,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091123174345) do
+ActiveRecord::Schema.define(:version => 20091125130044) do
+
+  create_table "navigations", :force => true do |t|
+    t.string   "text"
+    t.integer  "parent"
+    t.string   "destination_controller"
+    t.string   "destination_action"
+    t.string   "destination_id"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "previous"
+  end
+
+  create_table "open_id_authentication_associations", :force => true do |t|
+    t.integer "issued"
+    t.integer "lifetime"
+    t.string  "handle"
+    t.string  "assoc_type"
+    t.binary  "server_url"
+    t.binary  "secret"
+  end
+
+  create_table "open_id_authentication_nonces", :force => true do |t|
+    t.integer "timestamp",  :null => false
+    t.string  "server_url"
+    t.string  "salt",       :null => false
+  end
 
   create_table "systems", :force => true do |t|
     t.string   "variable"
@@ -29,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20091123174345) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.string   "openid_identifier"
   end
 
 end

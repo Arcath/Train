@@ -1,0 +1,30 @@
+<h1>Listing navigations</h1>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th>Parent</th>
+    <th>Destination controller</th>
+    <th>Destination action</th>
+    <th>Destination</th>
+    <th>Permalink</th>
+  </tr>
+
+<% @navigations.each do |navigation| %>
+  <tr>
+    <td><%=h navigation.text %></td>
+    <td><%=h navigation.parent %></td>
+    <td><%=h navigation.destination_controller %></td>
+    <td><%=h navigation.destination_action %></td>
+    <td><%=h navigation.destination_id %></td>
+    <td><%=h navigation.permalink %></td>
+    <td><%= link_to 'Show', navigation %></td>
+    <td><%= link_to 'Edit', edit_navigation_path(navigation) %></td>
+    <td><%= link_to 'Destroy', navigation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New navigation', new_navigation_path %>

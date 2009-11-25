@@ -1,0 +1,40 @@
+<h1>Editing navigation</h1>
+
+<% form_for(@navigation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </p>
+  <p>
+    <%= f.label :parent %><br />
+    <%= f.collection_select :parent, Navigation.all , :id, :text, :include_blank => "root", :blank_value => 0%>
+  </p>
+    <p>
+    <%= f.label :previous %><br />
+    <%= f.collection_select :previous, Navigation.all , :id, :text, :include_blank => "first", :blank_value => 0%>
+  </p>
+  <p>
+    <%= f.label :destination_controller %><br />
+    <%= f.text_field :destination_controller %>
+  </p>
+  <p>
+    <%= f.label :destination_action %><br />
+    <%= f.text_field :destination_action %>
+  </p>
+  <p>
+    <%= f.label :destination_id, "Destination ID" %><br />
+    <%= f.text_field :destination_id %>
+  </p>
+  <p>
+    <%= f.label :permalink %><br />
+    <%= f.text_field :permalink %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @navigation %> |
+<%= link_to 'Back', navigations_path %>

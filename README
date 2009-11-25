@@ -8,5 +8,11 @@ These are the gems required to get Train working:
 
 	-	Authlogic
 	-	Declarative Authorization
+	-	Authlogic-OID
+	-	Ruby-OpenID
 	
 All gems will be installed by running "rake gems:install"
+
+= Usage Notes
+
+Trains Authorization is now dependant on your super user accounts (admin) bieng the first role in User::ROLES

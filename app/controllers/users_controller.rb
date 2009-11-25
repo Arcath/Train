@@ -42,11 +42,13 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-      if @user.save
+    @user.save do |result|
+      if result
         flash[:notice] = 'Registration Successful.'
        redirect_to root_url
       else
         render :action => "new"
+      end
       end
   end
 

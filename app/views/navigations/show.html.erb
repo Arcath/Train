@@ -1,0 +1,33 @@
+<p>
+  <b>Text:</b>
+  <%=h @navigation.text %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @navigation.parent %>
+</p>
+
+<p>
+  <b>Destination controller:</b>
+  <%=h @navigation.destination_controller %>
+</p>
+
+<p>
+  <b>Destination action:</b>
+  <%=h @navigation.destination_action %>
+</p>
+
+<p>
+  <b>Destination:</b>
+  <%=h @navigation.destination_id %>
+</p>
+
+<p>
+  <b>Permalink:</b>
+  <%=h @navigation.permalink %>
+</p>
+
+
+<%= link_to 'Edit', edit_navigation_path(@navigation) %> |
+<%= link_to 'Back', navigations_path %>

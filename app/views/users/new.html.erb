@@ -11,6 +11,7 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </p>
+  <% if @user.openid_identifier.blank? %>
   <p>
     <%= f.label :password %><br />
     <%= f.password_field :password %>
@@ -20,8 +21,15 @@
     <%= f.password_field :password_confirmation %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Register' %>
+  </p>
+  <h2>Or user OpenID</h2>
+  <% end %>
+  <p>
+  	<%= f.label :openid_identifier, "OpenID URL" %><br />
+  	<%= f.text_field :openid_identifier %>
+  </p>
+    <p>
+    <%= f.submit 'Register' %>
   </p>
 <% end %>
-
-<%= link_to 'Back', users_path %>

@@ -38,3 +38,24 @@ a:hover{
 	background-color:#0000FF;
 	height:200px;
 }
+.navigation{
+	background-color:#000000;
+	margin:0px;
+	overflow:auto;
+}
+.navigation ul{
+	margin:0px;
+	list-style:none;
+}
+.navigation ul li{
+	float:left;
+	padding:5px;
+	border-left:#FFFFFF solid 1px;
+}
+input#user_openid_identifier, input#user_session_openid_identifier{
+	background:url(http://openid.net/images/login-bg.gif) no-repeat;
+	background-color:#FFF;
+	background-position: 0 50%;
+	color:#000;
+	padding-left:18px;
+}

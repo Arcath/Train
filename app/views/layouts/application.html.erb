@@ -31,6 +31,12 @@
 <div class="header">
 	
 </div>
+<div class="navigation">
+	<ul>
+	<% @fnav=Navigation.find(:first, :conditions => 'parent IS NULL AND previous IS NULL') %>
+	<%= navlinkwithnext(@fnav) %>
+	</ul>
+</div>
 <div class="content">
 <%= yield %>
 </div>

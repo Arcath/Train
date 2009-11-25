@@ -5,7 +5,7 @@
 
   <p>
     <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.text_field :username, :enabled => false %>
   </p>
   <p>
     <%= f.label :email %><br />
@@ -15,10 +15,25 @@
     <%= f.label :password %><br />
     <%= f.text_field :password %>
   </p>
+	<% if permitted_to? :edit, User.new %>
+		<p>
+			<%= f.label :role %><br />
+			<% if permitted_to? :index, :systems %>
+				<%= f.collection_select  :role, User::ROLES, :to_s, :humanize %>
+			<% else %>
+				<%= f.collection_select  :role, User::ROLES[1...User::ROLES.count+1], :to_s, :humanize %>
+			<% end %>
+		</p>
+	<% end %>
+	<% if @user.id == current_user.id then %>
+	  <p>
+  	<%= f.label :openid_identifier, "OpenID URL" %><br />
+  	<%= f.text_field :openid_identifier %>
+  	</p>
+	<% end %>
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'View Profile', @user %>
