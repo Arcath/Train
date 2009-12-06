@@ -1,1 +1,5 @@
-Test
+<h1>Welcome to <%= System.find(:first, :conditions => "variable = 'sitename'").value || "A Train CMS" %></h1>
+<% @posts.each do |@post| %>
+	<h2><%= @post.topic.title %></h2>
+	<%= render'posts/post' %>
+<% end %>

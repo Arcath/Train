@@ -10,9 +10,17 @@ These are the gems required to get Train working:
 	-	Declarative Authorization
 	-	Authlogic-OID
 	-	Ruby-OpenID
+	-	SearchLogic
+
+= Plugins
+
+These are the plugins that come with Train
+
+	-	PaperClip
 	
 All gems will be installed by running "rake gems:install"
 
 = Usage Notes
 
 Trains Authorization is now dependant on your super user accounts (admin) bieng the first role in User::ROLES
+You cant change the order of the the groups in User::ROLES, bit masking is used to do the permissions on the forums hence all forum permissions will be come corrupt if the ROLES order changes.

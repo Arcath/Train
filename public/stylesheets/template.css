@@ -6,11 +6,12 @@ body{
 
 a, a:visited{
 	text-decoration:none;
-	color:#0000FF
+	color:#7f95c7;
 }
 
 a:hover{
 	color:#0000CC;
+	background:none;
 }
 
 /*Custom Classes */
@@ -31,26 +32,53 @@ a:hover{
 	/*margin-top:-43px;*/
 }
 .content{
+	display:block;
 	width:900px;
 	margin:auto;
+	z-index:1;
 }
 .header{
 	background-color:#0000FF;
 	height:200px;
+	background:url(/images/banner_bg.jpg);
 }
 .navigation{
 	background-color:#000000;
 	margin:0px;
-	overflow:auto;
+	height:60px;
+	z-index:1000;
 }
 .navigation ul{
 	margin:0px;
 	list-style:none;
+	border-top:#FFFFFF solid 1px;
 }
-.navigation ul li{
+.navigation ul li a{
 	float:left;
 	padding:5px;
+	border-bottom:#FFFFFF solid 1px;
 	border-left:#FFFFFF solid 1px;
+	border-right:#FFFFFF solid 1px;
+}
+.navigation ul li a:hover{
+	background-color:#888888;
+}
+.navigation li ul{
+	padding-top:34px;
+	border:none;
+	margin:0px;
+	display:none;
+	z-index:1000;
+}
+.navigation li:hover ul{
+	display:block;
+}
+.navigation li ul li{
+	margin-top:-5px;
+}
+.navigation li ul li a{
+	background-color:#000;
+	border:#FFFFFF solid 1px;
 }
 input#user_openid_identifier, input#user_session_openid_identifier{
 	background:url(http://openid.net/images/login-bg.gif) no-repeat;
@@ -58,4 +86,18 @@ input#user_openid_identifier, input#user_session_openid_identifier{
 	background-position: 0 50%;
 	color:#000;
 	padding-left:18px;
+}
+.fdesc{
+	font-size:80%;
+	color:#AAAAAA;
+}
+.post_user{
+	width:15%;
+	float:left;
+}
+.post_user b{
+	color:#7f95c7;
+}
+.post_body{
+	width:85%;
 }

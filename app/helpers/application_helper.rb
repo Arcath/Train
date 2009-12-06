@@ -1,17 +1,32 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-	def navlinkwithnext(nav, lis = true)
-		out=navlink(nav,lis)
+	def navlinkwithnext(nav, lis = true, submenu = true)
+		if submenu then
+			sfnav=Navigation.find(:first, :conditions => "parent = #{nav.id} AND previous IS NULL")
+			if sfnav then
+				out="<li>"
+				out+=navlink(nav,false)
+				out += "<ul>"
+				out+=navlinkwithnext(sfnav,true,false)
+				out+="</ul>"
+				out+="</li>"
+			else
+				out=navlink(nav,lis)
+			end
+		else
+			out=navlink(nav,lis)
+		end
 		nextnav=Navigation.find(:first, :conditions => "previous = #{nav.id}")
 		if nextnav then
-			out+=navlinkwithnext(nextnav,lis)
+			out+=navlinkwithnext(nextnav,lis, submenu)
 		else
 			return out
 		end
 	end
 	def navlink(nav, lis = true)
 		if permitted_to? nav.destination_action.to_sym, nav.destination_controller.to_sym
-			if lis == true then out="<li>" end
+			out = ""
+			if lis == true then out+="<li>" end
 			if nav.permalink != "" then
 				out+= link_to nav.text, "/permalink/#{nav.permalink}"
 			else
@@ -20,7 +35,7 @@ module ApplicationHelper
 			if lis == true then out+="</li>" end
 			return out
 		else
-			return "NO"
+			return ""
 		end
 	end
 	def navlinkpath(nav)

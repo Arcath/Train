@@ -1,4 +1,5 @@
 class NavigationsController < ApplicationController
+	filter_resource_access
 	def index
 		@navigations = Navigation.all
 	end

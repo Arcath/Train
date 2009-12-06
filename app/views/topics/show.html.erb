@@ -1,0 +1,12 @@
+<h1>Viewing Topic <%= @topic.title %></h1>
+
+<% @topic.posts.each do |@post| %>
+	<%= render 'posts/post' %>
+<% end %>
+
+<% @post = Post.new %>
+<% @post.topic_id = @topic.id %>
+<% @post.forum_id = @topic.forum_id %>
+<% if permitted_to? :new, @post %>
+	<%= link_to "Reply", new_post_path %>
+<% end %>

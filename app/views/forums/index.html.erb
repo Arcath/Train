@@ -1,0 +1,7 @@
+<h1>Forums</h1>
+
+<%= toplevel(@forum) %>
+
+<% if permitted_to? :new, :forums %>
+	<%= link_to 'New forum', new_forum_path %>
+<% end %>

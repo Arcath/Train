@@ -1,0 +1,24 @@
+<h1>Editing post</h1>
+
+<% form_for(@post) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <b><%= @post.user.username %></b>
+  </p>
+  <p>
+    <b><%= @post.topic.title %></b>
+  </p>
+  <p>
+    <b><%= @post.forum.name %></b>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', topic_path(@post.topic) %>

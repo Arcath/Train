@@ -1,0 +1,22 @@
+<div style="display:block; overflow:auto;">
+	<div class="post_user">
+		<b><%= link_to @post.user.username, user_path(@post.user) %></b><br />
+		AVATAR...<br />
+		<%= @post.user.role.humanize %><br />
+		Posts: <%= @post.user.posts.count %>
+	</div>
+	<div class="post_body">
+		<%= @post.body %>
+	</div>
+	<hr>
+	A Signature Maybe?
+	<% if permitted_to? :edit, @post then %>
+		<%= link_to "Edit", edit_post_path(@post) %>
+	<% end %>
+	<% if permitted_to? :edit, @post and permitted_to? :destroy, @post then %>
+		|
+	<% end %>
+	<% if permitted_to? :destroy, @post then %>
+		<%= link_to 'Destroy', @post, :confirm => 'Are you sure?', :method => :delete %>
+	<% end %>
+</div>

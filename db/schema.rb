@@ -9,7 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091125130044) do
+ActiveRecord::Schema.define(:version => 20091205085304) do
+
+  create_table "forums", :force => true do |t|
+    t.string   "name"
+    t.integer  "previous"
+    t.integer  "parent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+    t.integer  "canviews_mask"
+    t.integer  "canposts_mask"
+    t.integer  "cantopics_mask"
+    t.integer  "canmoderates_mask"
+    t.boolean  "frontpage"
+  end
 
   create_table "navigations", :force => true do |t|
     t.string   "text"
@@ -38,9 +52,26 @@ ActiveRecord::Schema.define(:version => 20091125130044) do
     t.string  "salt",       :null => false
   end
 
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.integer  "forum_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "systems", :force => true do |t|
     t.string   "variable"
     t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topics", :force => true do |t|
+    t.string   "title"
+    t.integer  "forum_id"
+    t.integer  "firstpost_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,67 @@
+<h1>Editing forum</h1>
+
+<% form_for(@forum) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :previous %><br />
+    <%= f.collection_select :previous, Forum.all, :id, :name, :include_blank => "First" %>
+  </p>
+  <p>
+    <%= f.label :parent %><br />
+    <%= f.collection_select :parent, Forum.all, :id, :name, :include_blank => "Top Level" %>
+  </p>
+  <p>
+  	<%= f.label :description %><br/>
+  	<%= f.text_area :description, :rows => 5 %>
+  </p>
+  <p>
+  	<%= f.label :canviews, "Who can see the forum?" %>
+  	<% for role in User::ROLES %>
+  	<div>
+  		<%= check_box_tag "forum[canviews][]", role, @forum.canviews.include?(role) %>
+  		<%= role.humanize %>
+  	</div>
+	<% end %>
+  </p>
+  <p>
+  	<%= f.label :canposts, "Who can add new Posts?" %>
+  	<% for role in User::ROLES %>
+  	<div>
+  		<%= check_box_tag "forum[canposts][]", role, @forum.canposts.include?(role) %>
+  		<%= role.humanize %>
+  	</div>
+	<% end %>
+  </p>
+    <p>
+  	<%= f.label :cantopics, "Who can create new topics?" %>
+  	<% for role in User::ROLES %>
+  	<div>
+  		<%= check_box_tag "forum[cantopics][]", role, @forum.cantopics.include?(role) %>
+  		<%= role.humanize %>
+  	</div>
+	<% end %>
+  </p>
+  <p>
+  	<%= f.label :canmoderates, "Who Moderates this Forum?" %>
+  	<% for role in User::ROLES %>
+  	<div>
+  		<%= check_box_tag "forum[canmoderates][]", role, @forum.canmoderates.include?(role) %>
+  		<%= role.humanize %>
+  	</div>
+	<% end %>
+  </p>
+  <p>
+  	<%= check_box_tag "forum[frontpage]", 1, @forum.frontpage %>
+  	<%= f.label :frontpage, "First Posts appear on Frontpage?" %>
+  </p>
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show this forum', @forum %>

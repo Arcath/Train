@@ -10,6 +10,9 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :systems
 	map.resources :navigations
 	map.resources :acp
+	map.resources :forums
+	map.resources :topics
+	map.resources :posts
 	#PermaLinks
 	map.permalink "permalink/:permalink", :controller => 'navigations', :action => 'permalink'
 	#Home Page

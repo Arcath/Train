@@ -1,0 +1,11 @@
+<h1><%=h @forum.name %></h1>
+
+<% @forum.topics.each do |topic| %>
+	<%= link_to topic.title, topic_url(topic) %> <span class="fdesc">Replies: <%=topic.posts.count %>, last by <%= link_to topic.posts.last.user.username, user_url(topic.posts.last.user) %></span><br />
+<% end %>
+
+<% @topic= Topic.new %>
+<% @topic.forum_id = @forum.id %>
+<% if permitted_to? :new, @topic %>
+<%= link_to "New Topic", new_topic_path %>
+<% end %>

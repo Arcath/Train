@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
+	has_many :posts
+	attr_accessor :postable, :topicable, :modable
 	acts_as_authentic do |c|
 		c.openid_required_fields = [:nickname, :email]
 	end
 	
-	ROLES = %w[admin moderator author content_writer member banned]
+	ROLES = %w[admin moderator author content_writer member banned guest]
 	
 	def role_symbols
 		if role == nil then
