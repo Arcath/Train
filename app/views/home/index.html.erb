@@ -1,5 +1,5 @@
 <h1>Welcome to <%= System.find(:first, :conditions => "variable = 'sitename'").value || "A Train CMS" %></h1>
-<% @posts.each do |@post| %>
-	<h2><%= @post.topic.title %></h2>
-	<%= render'posts/post' %>
+<% @posts.each do |post| %>
+	<h2><%= link_to post.topic.title, topic_path(post.topic) %></h2>
+	<%= render :partial => post %>
 <% end %>

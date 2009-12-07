@@ -1,11 +1,11 @@
 <h1>Editing user</h1>
 
-<% form_for(@user) do |f| %>
+<% form_for @user, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :username %><br />
-    <%= f.text_field :username, :enabled => false %>
+    <%= f.text_field :username, :disabled => true %>
   </p>
   <p>
     <%= f.label :email %><br />
@@ -31,6 +31,15 @@
   	<%= f.text_field :openid_identifier %>
   	</p>
 	<% end %>
+  <p>
+  	<%= f.label :avatar %><br />
+  	<%= image_tag @user.avatar.url(:display) %>
+  	<%= f.file_field :avatar %>
+  </p>
+  <p>
+  	<%= f.label :signature %><br />
+  	<%= f.text_area :signature %>
+  </p>
   <p>
     <%= f.submit 'Update' %>
   </p>

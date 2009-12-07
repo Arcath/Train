@@ -8,6 +8,7 @@ class ForumsController < ApplicationController
 		@forum = Forum.find(params[:id])
 		session[:forum_id]=@forum.id
 		session[:topic_id]=nil
+		@topics = Topic.find(:all, :conditions => "forum_id = #{@forum.id}", :order => "created_at DESC")
 	end
 	
 	def new

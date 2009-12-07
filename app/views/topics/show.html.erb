@@ -1,7 +1,7 @@
 <h1>Viewing Topic <%= @topic.title %></h1>
 
-<% @topic.posts.each do |@post| %>
-	<%= render 'posts/post' %>
+<% @topic.posts.each do |post| %>
+	<%= render :partial => post %>
 <% end %>
 
 <% @post = Post.new %>

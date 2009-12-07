@@ -1,0 +1,38 @@
+= Train
+
+Train doesnt currently feature any form of installer, and is rather  featureless. For now dont use this source
+
+= GEM List
+
+These are the gems required to get Train working:
+
+	-	Authlogic
+	-	Declarative Authorization
+	-	Authlogic-OID
+	-	Ruby-OpenID
+	-	SearchLogic
+	-	TrainBBCode
+
+All gems will be installed by running "rake gems:install"
+
+= Plugins
+
+These are the plugins that come with Train
+
+	-	PaperClip
+
+= Install Tasks
+
+
+First off you will need to create config/database.yml
+
+you then need to run "rake db:migrate" to create the database.
+
+ADMIN_CREATION_HERE
+
+you will need to create public/avatars/display/missing.png and public/avatars/tiny/missing.png
+
+= Usage Notes
+
+Trains Authorization is now dependant on your super user accounts (admin) bieng the first role in User::ROLES
+You cant change the order of the the groups in User::ROLES, bit masking is used to do the permissions on the forums hence all forum permissions will be come corrupt if the ROLES order changes.

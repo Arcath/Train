@@ -10,7 +10,7 @@ class HomeController < ApplicationController
 				conditions+=" OR forum_id = #{forum.id}"
 			end
 		end
-		@topics=Topic.find(:all, :conditions => conditions, :limit => 10)
+		@topics=Topic.find(:all, :conditions => conditions, :limit => 10, :order => "created_at DESC")
 		@posts=[]
 		@topics.each do |topic|
 			@posts.push(Post.find(topic.firstpost_id))
