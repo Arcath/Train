@@ -7,6 +7,8 @@
   <title><%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'template' %>
+  <%= javascript_include_tag 'jquery' %>
+  <%= yield(:jsit) %>
 </head>
 <body>
 <% if flash[:notice] || flash[:error] %>
@@ -22,11 +24,16 @@
 <% else %>
 	Welcome to <%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %> please 
 	<%= link_to "Register", new_user_path %> or 
-	<%= link_to "Login", login_path %>
+	<%= link_to "Login", login_path, :id => "login" %>
 <% end %>	
 </div>
 <div class="header">
 	<%= image_tag "banner.jpg" %>
+	<% if permitted_to? :new, :user_sessions %>
+		<div class="login">
+			<%= render 'user_sessions/new' %>
+		</div>
+	<% end %>
 </div>
 <div class="navigation">
 	<ul>

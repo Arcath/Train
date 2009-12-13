@@ -1,5 +1,6 @@
+<% jsit 'jquery.ba-url.min', 'pagination' %>
+
 <h1>Welcome to <%= System.find(:first, :conditions => "variable = 'sitename'").value || "A Train CMS" %></h1>
-<% @posts.each do |post| %>
-	<h2><%= link_to post.topic.title, topic_path(post.topic) %></h2>
-	<%= render :partial => post %>
-<% end %>
+<div id="pagination">
+<%= render 'posts' %>
+</div>

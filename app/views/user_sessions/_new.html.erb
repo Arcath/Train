@@ -1,0 +1,18 @@
+<% form_for(UserSession.new) do |f| %>
+
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+  	<%= f.label :openid_identifier, "Or OpenID URL" %><br />
+  	<%= f.text_field :openid_identifier %>
+  </p>
+    <p>
+    <%= f.submit 'Login' %>
+  </p>
+<% end %>

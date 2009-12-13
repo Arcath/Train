@@ -103,3 +103,17 @@ input#user_openid_identifier, input#user_session_openid_identifier{
 	display:block;
 	float:right;
 }
+.login{
+	float:right;
+	margin:0px;
+	background-color:#000000;
+	color:#FFFFFF;
+	padding-left:5px;
+	padding-right:5px;
+	border-left:#FFFFFF solid 1px;
+	border-bottom:#FFFFFF solid 1px;
+}
+.login p{
+	margin-top:0px;
+	margin-bottom:5px;
+}

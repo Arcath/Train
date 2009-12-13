@@ -34,6 +34,7 @@ authorization do
 		has_permission_on :posts, :to => [:edit, :update, :destroy] do
 			if_attribute :forum => { :canmoderates => contains { user.role } }
 		end
+		has_permission_on :planet_feeds, :to => [:index, :show, :new, :create, :edit, :update]
 	end
 	role :member do
 		has_permission_on :home, :to => [:index]

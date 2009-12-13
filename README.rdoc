@@ -12,6 +12,7 @@ These are the gems required to get Train working:
 	-	Ruby-OpenID
 	-	SearchLogic
 	-	TrainBBCode
+	-	Will_Paginate
 
 All gems will be installed by running "rake gems:install"
 

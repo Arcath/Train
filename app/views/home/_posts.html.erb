@@ -1,0 +1,6 @@
+<% @posts.each do |post| %>
+	<h2><%= link_to post.topic.title, topic_path(post.topic) %></h2>
+	<%= render :partial => post %>
+<% end %>
+
+<%= will_paginate @posts %>

@@ -47,4 +47,8 @@ module ApplicationHelper
 			out="/#{nav.destination_controller}"
 		end
 	end
+	def jsit(*args)
+		args = args.map { |arg| arg == :defaults ? arg : arg.to_s }
+    		content_for(:jsit) { javascript_include_tag(*args) }
+	end
 end

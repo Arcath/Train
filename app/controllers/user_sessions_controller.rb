@@ -9,7 +9,8 @@ class UserSessionsController < ApplicationController
 		@user_session.save do |result|
 			if result
 				flash[:notice] = 'Login Successful.'
-				redirect_to root_url
+				goto = (request.env['HTTP_REFERER'] if request.env['HTTP_REFERER'] != "/login") || root_url
+				redirect_to goto
 			else
 				render :action => "new" 
 			end

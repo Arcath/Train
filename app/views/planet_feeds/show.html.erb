@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @planet_feed.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @planet_feed.url %>
+</p>
+
+<p>
+  <b>Site:</b>
+  <%=h @planet_feed.site %>
+</p>
+
+
+<%= link_to 'Edit', edit_planet_feed_path(@planet_feed) %> |
+<%= link_to 'Back', planet_feeds_path %>

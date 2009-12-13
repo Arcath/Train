@@ -1,0 +1,24 @@
+<h1>Listing planet_feeds</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Url</th>
+    <th>Site</th>
+  </tr>
+
+<% @planet_feeds.each do |planet_feed| %>
+  <tr>
+    <td><%=h planet_feed.name %></td>
+    <td><%=h planet_feed.url %></td>
+    <td><%=h planet_feed.site %></td>
+    <td><%= link_to 'Show', planet_feed %></td>
+    <td><%= link_to 'Edit', edit_planet_feed_path(planet_feed) %></td>
+    <td><%= link_to 'Destroy', planet_feed, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New planet_feed', new_planet_feed_path %>
