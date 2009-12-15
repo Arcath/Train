@@ -51,4 +51,8 @@ module ApplicationHelper
 		args = args.map { |arg| arg == :defaults ? arg : arg.to_s }
     		content_for(:jsit) { javascript_include_tag(*args) }
 	end
+	def sst(*args)
+		args = args.map { |arg| arg == :defaults ? arg : arg.to_s }
+    		content_for(:jsit) { stylesheet_link_tag(*args) }
+	end
 end

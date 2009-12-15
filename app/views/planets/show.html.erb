@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @planet.name %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%=h @planet.summary %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @planet.url %>
+</p>
+
+<p>
+  <b>Published at:</b>
+  <%=h @planet.published_at %>
+</p>
+
+<p>
+  <b>Guid:</b>
+  <%=h @planet.guid %>
+</p>
+
+
+<%= link_to 'Edit', edit_planet_path(@planet) %> |
+<%= link_to 'Back', planets_path %>

@@ -13,6 +13,7 @@ These are the gems required to get Train working:
 	-	SearchLogic
 	-	TrainBBCode
 	-	Will_Paginate
+	-	Feedzirra
 
 All gems will be installed by running "rake gems:install"
 

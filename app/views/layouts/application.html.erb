@@ -9,6 +9,7 @@
   <%= stylesheet_link_tag 'template' %>
   <%= javascript_include_tag 'jquery' %>
   <%= yield(:jsit) %>
+  <%= yield(:sst) %>
 </head>
 <body>
 <% if flash[:notice] || flash[:error] %>

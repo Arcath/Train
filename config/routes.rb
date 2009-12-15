@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :planet_feeds
-
 	#Special Mappings
 	map.login "login", :controller => 'user_sessions', :action => 'new'
 	map.logout "logout", :controller => 'user_sessions', :action => 'destroy'
@@ -15,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :forums
 	map.resources :topics
 	map.resources :posts
+	map.resources :planet_feeds
+	map.resources :planets
 	#PermaLinks
 	map.permalink "permalink/:permalink", :controller => 'navigations', :action => 'permalink'
 	#Home Page

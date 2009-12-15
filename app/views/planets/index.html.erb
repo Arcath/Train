@@ -1,0 +1,22 @@
+<% jsit "facebox" %>
+<% sst "facebox" %>
+<% @lastfeed="" %>
+
+<h1>Planet</h1>
+
+<% @planets.each do |planet| %>
+	<% if @lastfeed != planet.feed(planet) %>
+		<h2><%= planet.feed(planet) %></h2>
+	<% end %>
+	<% @lastfeed=planet.feed(planet) %>
+	<%= link_to planet.name, "#planet-#{planet.id}", :rel => "facebox" %><br />
+	<div id="planet-<%= planet.id %>" class="facebox_hider">
+		<h1><%= planet.name %></h1>
+		<% if planet.summary =~ /\[\.\.\.\]/ then %>
+			<%= planet.summary.gsub("[...]",link_to("[...]",planet.url,:target => "_BLANK"))  %>
+		<% else %>
+			<%= planet.summary %><br />
+			<%= link_to "Full Article", planet.url %>
+		<% end %>
+	</div>
+<% end %>

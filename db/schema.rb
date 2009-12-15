@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091209193048) do
+ActiveRecord::Schema.define(:version => 20091215180036) do
 
   create_table "forums", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(:version => 20091209193048) do
     t.string   "name"
     t.string   "url"
     t.string   "site"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "planets", :force => true do |t|
+    t.string   "name"
+    t.text     "summary"
+    t.string   "url"
+    t.datetime "published_at"
+    t.string   "guid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
