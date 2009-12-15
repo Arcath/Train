@@ -22,6 +22,15 @@ All gems will be installed by running "rake gems:install"
 These are the plugins that come with Train
 
 	-	PaperClip
+	-	OpenID Handler
+	
+= JavaScript Librarys
+
+These are the JavaScript Librarys that come with Train
+
+	-	jQuery
+	-	jQuery URL Utils
+	-	Facebox
 
 = Install Tasks
 
@@ -32,7 +41,6 @@ you then need to run "rake db:migrate" to create the database.
 
 ADMIN_CREATION_HERE
 
-you will need to create public/avatars/display/missing.png and public/avatars/tiny/missing.png
 
 = Usage Notes
 
