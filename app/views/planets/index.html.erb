@@ -10,7 +10,7 @@
 	<% end %>
 	<% @lastfeed=planet.feed(planet) %>
 	<%= link_to planet.name, "#planet-#{planet.id}", :rel => "facebox" %><br />
-	<div id="planet-<%= planet.id %>" class="facebox_hider">
+	<div id="planet-<%= planet.id %>" style="display:none;">
 		<h1><%= planet.name %></h1>
 		<% if planet.summary =~ /\[\.\.\.\]/ then %>
 			<%= planet.summary.gsub("[...]",link_to("[...]",planet.url,:target => "_BLANK"))  %>

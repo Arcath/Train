@@ -55,4 +55,7 @@ module ApplicationHelper
 		args = args.map { |arg| arg == :defaults ? arg : arg.to_s }
     		content_for(:jsit) { stylesheet_link_tag(*args) }
 	end
+	def current_page
+		request.path_parameters['controller']
+	end
 end

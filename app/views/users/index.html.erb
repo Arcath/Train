@@ -1,20 +1,7 @@
+<% jsit 'jquery.ba-url.min', 'pagination' %>
+
 <h1>Users</h1>
 
-<table>
-  <tr>
-  	<th></th>
-    <th>Username</th>
-    <th>Role</th>
-    <th>Posts</th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-  	<td><%= image_tag user.avatar.url(:tiny) %></td>
-    <td><%=h user.username %></td>
-    <td><%=h user.role.humanize %></td>
-    <td><%= user.posts.count %></td>
-    <td><%= link_to 'View Profile', user %></td>
-  </tr>
-<% end %>
-</table>
+<div id="pagination">
+<%= render 'users' %>
+</div>

@@ -12,7 +12,7 @@
 
 <p>
 	<b>Role:</b>
-	<%= h @user.role.humanize %>
+	<%= h @user.failsafe_role.humanize %>
 </p>
 <p>
 	<%= image_tag @user.avatar.url(:display) %>

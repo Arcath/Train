@@ -1,50 +1,128 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %></title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
+<%= auto_discovery_link_tag(:rss, {:controller => "home", :format => :rss}) %>
+
+<title><%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %></title>
   <%= stylesheet_link_tag 'scaffold' %>
-  <%= stylesheet_link_tag 'template' %>
+  <%= stylesheet_link_tag 'NewHorizon' %>
   <%= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag 'newhorizon' %>
   <%= yield(:jsit) %>
   <%= yield(:sst) %>
+	
 </head>
+
 <body>
 <% if flash[:notice] || flash[:error] %>
-<div class="flash" id="flash"><%= flash[:notice] %>
-<%= flash[:error] %>
-</div>
+	<div class="flash <%= if flash[:error] then "warning" end %>" id="flash">	<%= flash[:notice] %>
+	<%= flash[:error] %>
+	</div>
 <% end %>
-<div class="usermenu">
-<% if current_user %>
-	Welcome Back <%= current_user.username %>,
-	<%= link_to "Edit Profile", edit_user_path(current_user.id) %> | 
-	<%= link_to "Logout", logout_path %>
-<% else %>
-	Welcome to <%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %> please 
-	<%= link_to "Register", new_user_path %> or 
-	<%= link_to "Login", login_path, :id => "login" %>
-<% end %>	
-</div>
-<div class="header">
-	<%= image_tag "banner.jpg" %>
-	<% if permitted_to? :new, :user_sessions %>
-		<div class="login">
-			<%= render 'user_sessions/new' %>
+
+	<!-- navigation starts here -->
+	<div id="nav">
+		<ul>
+		<% @fnav=Navigation.find(:first, :conditions => 'parent IS NULL AND previous IS NULL') %>
+		<%= navlinkwithnext(@fnav, true, false) %>
+		</ul>
+	</div>
+
+	<!-- header starts here -->
+	<div id="header">	
+	
+		<div id="clouds"></div>
+		
+		<h1 id="logo-text"><a href="index.html" title=""><%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %></a></h1>	
+		<p id="slogan">Gems and Rails</p>
+		<div id="usermenu">
+		<% if current_user %>
+			Welcome Back <%= current_user.username %>,
+			<%= link_to "Edit Profile", edit_user_path(current_user.id) %> | 
+			<%= link_to "Logout", logout_path %>
+		<% else %>
+			Welcome to <%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %> please 
+			<%= link_to "Register", new_user_path %> or 
+			<%= link_to "Login", login_path, :id => "login" %>
+		<% end %>	
+		</div>			
+	</div>	
+				
+	<!-- content-wrap starts here -->
+	<div id="content-wrap"><div id="content">	 
+	
+		<div id="sidebar" >	
+				
+			<h3>Controller Menu</h3>			
+			<ul class="sidemenu">
+						
+			</ul>		
+		
+		</div>	
+	
+		<div id="main">		
+				
+			<%= yield %>				
 		</div>
-	<% end %>
-</div>
-<div class="navigation">
-	<ul>
-	<% @fnav=Navigation.find(:first, :conditions => 'parent IS NULL AND previous IS NULL') %>
-	<%= navlinkwithnext(@fnav) %>
-	</ul>
-</div>
-<div class="content">
-<%= yield %>
-</div>
+	<!-- content-wrap ends here -->		
+	</div></div>
+
+	<!-- footer starts here-->	
+	<div id="footer-wrap">
+	
+		<!-- columns starts here-->		
+		<div id="columns">
+	
+			<div class="col3" id="statistics">
+				<h3>Statistics</h3>
+				<ul>
+					<li><a href="#">Users: <%= User.all.count %></a></li>
+					<li><a href="#">Latest User: <%= User.last.username %></a></li>
+					<li><a href="#">Posts: <%= Post.all.count %></a></li>
+					<li><a href="#">Topics: <%= Topic.all.count %></a></li>
+				</ul>
+			</div>
+			<div class="col3-center">
+				<h3>Recent Topics</h3>
+				<ul>
+					<% Topic.all(:limit => 5, :order => "created_at DESC").each do |topic| %>
+						<li><%= link_to topic.title, topic_path(topic) %></li>
+					<% end %>
+				</ul>
+			</div>
+			<div class="col3">
+				<h3>Recent Posts</h3>
+				<ul>
+					<% Post.all(:limit => 5, :order => "created_at DESC").each do |post| %>
+						<li><%= link_to post.topic.title, topic_path(post.topic) %> by <%= link_to post.user.username, user_path(post.user) %></li>
+					<% end %>
+				</ul>
+			</div>
+		
+		<!-- columns ends -->
+		</div>	
+	
+		<div id="footer-bottom">		
+			<p>
+			<strong><%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %></strong> | 
+			Powered By <%= link_to "Train CMS", "http://www.arcath.net", :target => "_BLANK" %> | 
+			Design by: <a href="http://www.styleshout.com/">styleshout</a> | 
+			Valid <a href="http://validator.w3.org/check?uri=referer">XHTML</a> | 
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>
+			
+   		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+			<a href="/">Home</a>&nbsp;|&nbsp;
+	  		<%= link_to "RSS Feed", :controller => "home", :format => :rss  %>
+			</p>		
+		</div>	
+	
+	<!-- footer ends-->		
+	</div>
 
 </body>
 </html>

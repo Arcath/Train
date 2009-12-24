@@ -1,0 +1,19 @@
+	<table>
+			<tr>
+		  	<th></th>
+			<th>Username</th>
+			<th>Role</th>
+			<th>Posts</th>
+			<th><%= will_paginate @users %></th>
+		</tr>
+
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= image_tag user.avatar.url(:tiny) %></td>
+				<td><%=h user.username %></td>
+				<td><%=h user.failsafe_role.humanize %></td>
+				<td><%= user.posts.count %></td>
+				<td><%= link_to 'View Profile', user %></td>
+			</tr>
+		<% end %>
+	</table>

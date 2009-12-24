@@ -1,23 +1,25 @@
 <div style="display:block; overflow:auto;">
-	<div class="post_user">
+	<p class="post-by align-right"></p>
+	<div class="post-user">
 		<b><%= link_to post.user.username, user_path(post.user) %></b><br />
 		<%= image_tag post.user.avatar.url(:display) %><br />
 		<%= post.user.role.humanize %><br />
 		Posts: <%= post.user.posts.count %>
 	</div>
-	<div class="post_body">
+	<div class="post-body">
 		<%= post.body.tbbc %>
 		<br />
 		<br />
-		<% if permitted_to? :edit, post then %>
+		<p class="post-footer align-right"><% if permitted_to? :edit, post then %>
 			<%= link_to "Edit", edit_post_path(post) %>
 		<% end %>
 		<% if permitted_to? :edit, post and permitted_to? :destroy, post then %>
 			|
 		<% end %>
 		<% if permitted_to? :destroy, post then %>
-			<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+			<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %> | 
 		<% end %>
+		<%= post.created_at %></p>
 		<% if post.user.signature != nil then %>
 			<hr>
 			<%= post.user.signature.tbbc %>
