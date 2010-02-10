@@ -11,13 +11,18 @@
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'NewHorizon' %>
   <%= javascript_include_tag 'jquery' %>
-  <%= javascript_include_tag 'newhorizon' %>
+  <%= javascript_include_tag 'jquery.timer', 'jquery.ui' %>
+  <%= javascript_include_tag 'privatemessage' if current_user %>
   <%= yield(:jsit) %>
   <%= yield(:sst) %>
-	
+  <%= javascript_include_tag 'newhorizon' %>
+  <% t=TBBC.new %>
+  <% t.conf(:syntax_theme => "Midnight") %>
+  <%= syntax_highlighter_header(t) %>
 </head>
 
 <body>
+<div class="msgflash" id="msgflash" style="display:none;" url="<%= messages_path %>"></div>
 <% if flash[:notice] || flash[:error] %>
 	<div class="flash <%= if flash[:error] then "warning" end %>" id="flash">	<%= flash[:notice] %>
 	<%= flash[:error] %>
@@ -26,41 +31,45 @@
 
 	<!-- navigation starts here -->
 	<div id="nav">
-		<ul>
+		<ul class="colourize">
 		<% @fnav=Navigation.find(:first, :conditions => 'parent IS NULL AND previous IS NULL') %>
 		<%= navlinkwithnext(@fnav, true, false) %>
 		</ul>
 	</div>
-
 	<!-- header starts here -->
 	<div id="header">	
 	
 		<div id="clouds"></div>
 		
-		<h1 id="logo-text"><a href="index.html" title=""><%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %></a></h1>	
-		<p id="slogan">Gems and Rails</p>
-		<div id="usermenu">
-		<% if current_user %>
-			Welcome Back <%= current_user.username %>,
-			<%= link_to "Edit Profile", edit_user_path(current_user.id) %> | 
-			<%= link_to "Logout", logout_path %>
-		<% else %>
-			Welcome to <%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %> please 
-			<%= link_to "Register", new_user_path %> or 
-			<%= link_to "Login", login_path, :id => "login" %>
-		<% end %>	
-		</div>			
-	</div>	
-				
+		<h1 id="logo-text"><a href="/home" title=""><%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %></a></h1>	
+		<p id="slogan">Gems and Rails in <%= request.format %></p>
+		
+	</div>			
 	<!-- content-wrap starts here -->
 	<div id="content-wrap"><div id="content">	 
 	
 		<div id="sidebar" >	
+			
+			<% if current_user %>
+				<h3><%= current_user.username %></h3>
+				<blockquote>
+					<%= image_tag current_user.avatar(:display) %><br />
+					<%= current_user.role.humanize %><br />
+					Posts: <%= current_user.posts.count %><br />
+					<br />
+					<%= link_to 'Edit Profile', edit_user_path(current_user) %><br />
+					<%= link_to '','', :id => 'collapse_link' %>
+				</blockquote>
+			<% else %>
+				<h3>Welcome to <%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %></h3>
+				<%= render 'user_sessions/new'  %>
+				<blockquote>
+					<%= link_to 'Register', new_user_path %>
+				</blockquote>
+			<% end %>
 				
-			<h3>Controller Menu</h3>			
-			<ul class="sidemenu">
-						
-			</ul>		
+			<h3>Sidebar</h3>			
+			<%= sidebar %>		
 		
 		</div>	
 	

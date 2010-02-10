@@ -2,5 +2,16 @@
 
 Admin Tasks:<br />
 <ul>
-	<li></li>
+	<% if permitted_to? :index, :systems then %>
+		<li><%= link_to "System Variables", systems_path %></li>
+	<% end %>
+	<% if permitted_to? :index, :planet_feeds then %>
+		<li><%= link_to "Planet Feeds", planet_feeds_path %></li>
+	<% end %>
+	<% if permitted_to? :index, :navigations then %>
+		<li><%= link_to "Navigation", navigations_path %></li>
+	<% end %>
+	<% if permitted_to? :index, :pages then %>
+		<li><%= link_to "Page Manager", pages_path %></li>
+	<% end %>
 </ul>

@@ -1,0 +1,8 @@
+<% jsit 'jquery.fieldselection', 'tbbce' %>
+<h1><%=h @page.name %></h1>
+
+<!---<% form_for(@page) do |f| %>-->
+	<% @tbbce=f.tbbce :content %>
+<!---<% end %>-->
+<% content=@page.content.tbbc(:custom_tags => [[/\[surl=(.*?)\](.*?)\[\/surl\]/,'<a href="\1">\2</a>',true]]) %>
+<%= Liquid::Template.parse(content).render('page' => @page, 'tbbce' => @tbbce) %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091215180036) do
+ActiveRecord::Schema.define(:version => 20100101160838) do
 
   create_table "forums", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(:version => 20091215180036) do
     t.integer  "cantopics_mask"
     t.integer  "canmoderates_mask"
     t.boolean  "frontpage"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "sender_delete"
+    t.boolean  "receiver_delete"
+    t.boolean  "read"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "navigations", :force => true do |t|
@@ -50,6 +62,13 @@ ActiveRecord::Schema.define(:version => 20091215180036) do
     t.integer "timestamp",  :null => false
     t.string  "server_url"
     t.string  "salt",       :null => false
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "planet_feeds", :force => true do |t|

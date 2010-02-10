@@ -1,1 +1,5 @@
-$("#pagination").html("<%= escape_javascript(render("users")) %>");
+<% unless @autocompletes %>
+	$("#pagination").html("<%= escape_javascript(render("users")) %>");
+<% else %>
+	$("#auto_complete_results").html("<%= escape_javascript(render("results")) %>");
+<% end %>

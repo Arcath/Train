@@ -1,5 +1,5 @@
 class NavigationsController < ApplicationController
-	filter_resource_access
+	filter_access_to :index, :show, :edit, :new, :create, :update, :destroy
 	def index
 		@navigations = Navigation.all
 	end
@@ -10,7 +10,12 @@ class NavigationsController < ApplicationController
 	end
 
 	def show
-		@navigation = Navigation.find(params[:id])
+		if params[:permalink] then
+			@nav=Navigation.permalink_equals(params[:permalink])
+			redirect_to :controller => @nav.destination_controller, :action => @nav.destination_action, :id => @nav.destination_id
+		else
+			@navigation = Navigation.find(params[:id])
+		end
 	end
 	
 	def new

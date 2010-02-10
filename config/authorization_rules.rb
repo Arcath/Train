@@ -13,6 +13,7 @@ authorization do
 			if_attribute :forum => { :cantopics => contains { user.role_symbols.to_s } }
 		end
 		has_permission_on :planets, :to => [:index]
+		has_permission_on :pages, :to => [:show]
 	end
 	role :admin do
 		has_permission_on :home, :to => [:index]
@@ -37,6 +38,8 @@ authorization do
 		end
 		has_permission_on :planet_feeds, :to => [:index, :show, :new, :create, :edit, :update]
 		has_permission_on :planets, :to => [:index]
+		has_permission_on :pages, :to => [:index, :show, :edit, :new, :create, :update, :destroy]
+		has_permission_on :messages, :to => [:index, :show, :edit, :new, :create, :update, :destroy]
 	end
 	role :member do
 		has_permission_on :home, :to => [:index]
@@ -54,6 +57,8 @@ authorization do
 			if_attribute :postable => is { user.postable }
 		end
 		has_permission_on :planets, :to => [:index]
+		has_permission_on :pages, :to => [:show]
+		has_permission_on :messages, :to => [:index, :show, :edit, :new, :create, :update, :destroy]
 	end
 	role :moderator do
 		includes :member

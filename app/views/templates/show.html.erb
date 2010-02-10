@@ -1,0 +1,16 @@
+<% title "Template" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @template.name %>
+</p>
+<p>
+  <strong>Filename:</strong>
+  <%=h @template.filename %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_template_path(@template) %> |
+  <%= link_to "Destroy", @template, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", templates_path %>
+</p>

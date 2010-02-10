@@ -1,3 +1,4 @@
+<% jsit 'jquery.fieldselection', 'tbbce' %>
 <h1>New topic in <%= @topic.forum.name %></h1>
 
 <% form_for(@topic) do |f| %>
@@ -10,7 +11,7 @@
     <%= f.hidden_field :forum_id %>
   <p>
     <%= f.label :post_body %><br />
-    <%= f.text_area :post_body %>
+    <%= f.tbbce :post_body %>
   </p>
   <p>
     <%= f.submit 'Create' %>

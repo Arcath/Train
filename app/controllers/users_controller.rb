@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
 	filter_resource_access
-  # GET /users
-  # GET /users.xml
 	def index
-		@users = User.paginate(:page => params[:page], :per_page => 15, :order => "username ASC")
+		@users = User.paginate(:page => params[:page], :per_page => 15, :order => "username ASC") unless params[:search]
+		@autocompletes = User.find(:all, :conditions => ['username LIKE ?', "%#{params[:search]}%"], :limit => 10) if params[:search]
 	end
 
   # GET /users/1

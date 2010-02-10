@@ -1,8 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :templates
+
 	#Special Mappings
 	map.login "login", :controller => 'user_sessions', :action => 'new'
 	map.logout "logout", :controller => 'user_sessions', :action => 'destroy'
 	#Most Special Mappings should be handled by the PermaLink function in navigation
+	#PermaLinks
+	map.permalink "permalink/:permalink", :controller => 'navigations', :action => 'permalink'
 	#Resources
 	map.resources :user_sessions
 	map.resources :users
@@ -15,8 +19,9 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :posts
 	map.resources :planet_feeds
 	map.resources :planets
-	#PermaLinks
-	map.permalink "permalink/:permalink", :controller => 'navigations', :action => 'permalink'
+	map.resources :pages
+	map.resources :messages
+	map.resources :tbbce
 	#Home Page
 	map.root :controller => 'home', :action => 'index'
 end

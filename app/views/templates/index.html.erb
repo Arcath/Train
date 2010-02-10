@@ -1,0 +1,19 @@
+<% title "Templates" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Filename</th>
+  </tr>
+  <% for template in @templates %>
+    <tr>
+      <td><%=h template.name %></td>
+      <td><%=h template.filename %></td>
+      <td><%= link_to "Show", template %></td>
+      <td><%= link_to "Edit", edit_template_path(template) %></td>
+      <td><%= link_to "Destroy", template, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Template", new_template_path %></p>

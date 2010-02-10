@@ -5,12 +5,17 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter { |c| Authorization.current_user = c.current_user }
+  before_filter :template
+  helper_method :template
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
   
   def permission_denied
-  	flash[:error]="You do not have permission to do that"
+  	flash[:error]="I'm afraid I can't let you do that"
+  	if @current_user then
+  		flash[:error]+=" #{@current_user.username}"
+  	end
   	redirect_to root_url
   end
   
@@ -47,5 +52,11 @@ class ApplicationController < ActionController::Base
   	end
   	return @current_user if defined?(@current_user)
   	@current_user = current_user_session && current_user_session.record
+  end
+  def template
+  	#request.format = :newhorizon
+  end
+  rescue_from ActionView::MissingTemplate do |exception|
+    request.format = :html
   end
 end

@@ -1,0 +1,50 @@
+= Train BBCode
+
+Rails Gem for BBCode
+
+== Install
+
+=== As a Gem
+
+gem install trainbbcode
+
+For rails you will need to add:
+
+config.gem "trainbbcode"
+
+to config/enviroments.rb
+
+== Optional Requirements
+
+=== Ultraviolet
+
+If you want to use syntax highlighting you will need to install the "ultraviolet" gem
+
+Once you have the gem installed you will need to run:
+
+    uv -s ruby --copy-files css
+    gief css filez
+
+
+
+== Usage
+
+This adds a method to string of .tbbc which lets you parse the code like this:
+
+  "[b]bold text[/b] and [i]italic[/i]".tbbc
+
+that would output:
+
+  "<strong>bold text</strong> and <i>italic</i>"
+
+Or you can configure it by creating a TBBC object and running "conf"
+
+  tbbc=TBBC.new
+  tbbc.config(:strong_enabled => false)
+  tbbc.parse("[b]bold text[/b] and [i]italic[/i]")
+  
+This would output:
+
+  "[b]bold text[/b] and <i>italic</i>"
+  
+For More information and examples visit http://www.arcath.net/pages/2

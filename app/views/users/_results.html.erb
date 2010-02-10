@@ -1,0 +1,5 @@
+<ul>
+	<% @autocompletes.each do |user| %>
+	<li><%= link_to user.username, '', :id => 'auto_complete_link' %></li>
+	<% end %>
+</ul>

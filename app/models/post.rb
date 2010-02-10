@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
 				conditions+=" OR forum_id = #{forum.id}"
 			end
 		end
-		@topics=Topic.find(:all, :conditions => conditions, :limit => 10, :order => "created_at DESC")
+		@topics=Topic.find(:all, :conditions => conditions, :limit => 50, :order => "created_at DESC")
 		postids=""
 		@topics.each do |topic|
 			if postids == "" then

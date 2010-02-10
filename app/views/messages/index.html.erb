@@ -1,0 +1,31 @@
+<h1>Listing messages</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>From</th>
+    <th>Title</th>
+  </tr>
+
+<% @newmessages.each do |message| %>
+  <tr id="highlight">
+    <td><%= image_tag message.sender.avatar.url(:tiny) %></td>
+    <td><%=h message.sender.username %></td>
+    <td><%= link_to message.title, message %></td>
+    <td><%= link_to 'Delete', message, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= image_tag message.sender.avatar.url(:tiny) %></td>
+    <td><%=h message.sender.username %></td>
+    <td><%= link_to message.title, message %></td>
+    <td><%= link_to 'Delete', message, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New message', new_message_path %>

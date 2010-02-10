@@ -1,0 +1,19 @@
+<div style="display:block; overflow:auto;">
+	<p class="post-by align-right"></p>
+	<div class="post-user">
+		<b><%= link_to @message.sender.username, user_path(@message.sender) %></b><br />
+		<%= image_tag @message.sender.avatar.url(:display) %><br />
+		<%= @message.sender.role.humanize %><br />
+		Posts: <%= @message.sender.posts.count %>
+	</div>
+	<div class="post-body">
+		<%= @message.body.tbbc %>
+		<br />
+		<br />
+		<%= @message.created_at %></p>
+		<% if @message.sender.signature != nil then %>
+			<hr>
+			<%= @message.sender.signature.tbbc %>
+		<% end %>
+	</div>
+</div>

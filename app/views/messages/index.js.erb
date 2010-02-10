@@ -1,0 +1,8 @@
+<% if @newmessages.count != 0 then %>
+	$('#msgflash').html("You have <%= escape_javascript(@newmessages.count.to_s) %> new Message");
+	$('#msgflash').slideDown("slow");
+	$('#msgflash').live("click",function(){
+		window.location = $(this).attr("url");
+		return false
+	});
+<% end %>

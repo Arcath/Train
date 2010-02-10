@@ -1,0 +1,11 @@
+= TrainBBCode Editor
+
+= Install
+
+== As a gem
+
+Not on gemcutter yet
+
+== As a plugin
+
+    script/plugin install git://github.com/Arcath/TrainBBCode-Editor.git
