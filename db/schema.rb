@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100101160838) do
+ActiveRecord::Schema.define(:version => 20100210170317) do
 
   create_table "forums", :force => true do |t|
     t.string   "name"
@@ -101,6 +101,13 @@ ActiveRecord::Schema.define(:version => 20100101160838) do
   create_table "systems", :force => true do |t|
     t.string   "variable"
     t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "templates", :force => true do |t|
+    t.string   "name"
+    t.string   "filename"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,7 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :templates
-
-	#Special Mappings
+  	#Special Mappings
 	map.login "login", :controller => 'user_sessions', :action => 'new'
 	map.logout "logout", :controller => 'user_sessions', :action => 'destroy'
 	#Most Special Mappings should be handled by the PermaLink function in navigation
@@ -22,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :pages
 	map.resources :messages
 	map.resources :tbbce
+	map.resources :templates
 	#Home Page
 	map.root :controller => 'home', :action => 'index'
 end

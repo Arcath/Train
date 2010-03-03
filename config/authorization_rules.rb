@@ -40,6 +40,7 @@ authorization do
 		has_permission_on :planets, :to => [:index]
 		has_permission_on :pages, :to => [:index, :show, :edit, :new, :create, :update, :destroy]
 		has_permission_on :messages, :to => [:index, :show, :edit, :new, :create, :update, :destroy]
+		has_permission_on :templates, :to => [:index, :show, :edit, :new, :create, :update, :destroy]
 	end
 	role :member do
 		has_permission_on :home, :to => [:index]

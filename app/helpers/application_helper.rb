@@ -90,5 +90,8 @@ module ApplicationHelper
 			return "Once you are logged in you will be able to see recent news here, be it new topics or posts even posts on the planet"
 		end
 	end
+	def title(s)
+		content_for(:title) { s }
+	end
 end
 class Activity < Struct.new(:date, :type, :object); end

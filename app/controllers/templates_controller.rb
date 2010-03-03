@@ -1,4 +1,5 @@
 class TemplatesController < ApplicationController
+  filter_resource_access
   def index
     @templates = Template.all
   end

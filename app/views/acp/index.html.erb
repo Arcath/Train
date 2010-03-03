@@ -14,4 +14,7 @@ Admin Tasks:<br />
 	<% if permitted_to? :index, :pages then %>
 		<li><%= link_to "Page Manager", pages_path %></li>
 	<% end %>
+	<% if permitted_to? :index, :templates then %>
+		<li><%= link_to "Template Manager", templates_path %></li>
+	<% end %>
 </ul>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
 <%= auto_discovery_link_tag(:rss, {:controller => "home", :format => :rss}) %>
 
-<title><%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %></title>
+<title><%= System.find(:first, :conditions => "variable = 'sitename'").value || "Train CMS" %><%= " :: #{yield(:title)}" if yield(:title) %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'NewHorizon' %>
   <%= javascript_include_tag 'jquery' %>
